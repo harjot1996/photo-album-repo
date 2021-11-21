@@ -1,10 +1,11 @@
 $('document').ready(function () {
+  var baseUrl_ = "https://xak6l5w8k0.execute-api.us-east-1.amazonaws.com/v1";
     
   $("#x-search-form").on('submit', function (event) {
     event.preventDefault();
     var queryString = $("#transcript").val();
     $.ajax({
-      url: "https://kujqgsldke.execute-api.us-east-1.amazonaws.com/v1/search",
+      url: baseUrl_ + "/search",
       type: "GET",
       data: {
         q: queryString
@@ -50,7 +51,7 @@ $('document').ready(function () {
     }
 
     $.ajax({
-      url: "https://kujqgsldke.execute-api.us-east-1.amazonaws.com/v1/upload/b2-foto/"+fileName,
+      url: baseUrl_ + "/upload/b2-foto/" + fileName,
       type: "PUT",
       data: file,
       processData: false,
