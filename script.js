@@ -1,6 +1,8 @@
 $('document').ready(function () {
   //var baseUrl_ = "https://kujqgsldke.execute-api.us-east-1.amazonaws.com/v1";
   var baseUrl_ = "https://xak6l5w8k0.execute-api.us-east-1.amazonaws.com/v1";
+  var bucketName_ = "b2-foto";
+  var apiKey_ = "IQcppMY6Vc0JL4PlTowQ8fQD90CgM424Dv4ueux7";
     
   $("#x-search-form").on('submit', function (event) {
     event.preventDefault();
@@ -14,7 +16,7 @@ $('document').ready(function () {
       beforeSend: function(xhr){
         $('#x-result-txt').text(' ');
         $('#x-hrule').css('display', 'none');
-        xhr.setRequestHeader('x-api-key', 'IQcppMY6Vc0JL4PlTowQ8fQD90CgM424Dv4ueux7');
+        xhr.setRequestHeader('x-api-key', apiKey_);
       },
       error: function(res) {console.log(res)},
       success: function(res) { 
@@ -52,7 +54,7 @@ $('document').ready(function () {
     }
 
     $.ajax({
-      url: baseUrl_ + "/upload/b2-foto/" + fileName,
+      url: baseUrl_ + "/upload/" + bucketName_+ "/" + fileName,
       type: "PUT",
       data: file,
       processData: false,
@@ -62,7 +64,7 @@ $('document').ready(function () {
         $('#x-success-msg').text('')
         xhr.setRequestHeader('Content-Type', fileType);
         xhr.setRequestHeader('x-amz-meta-customLabels', customLabels);
-        xhr.setRequestHeader('x-api-key', 'IQcppMY6Vc0JL4PlTowQ8fQD90CgM424Dv4ueux7'); // Not safe but the HW doesn't ask for any secure way to do this
+        xhr.setRequestHeader('x-api-key', apiKey_);
       },
       error: function(res) {console.log(res)},
       success: function(res) { 
