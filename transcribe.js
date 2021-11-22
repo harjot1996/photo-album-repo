@@ -23,9 +23,9 @@ recognition.onresult = function(event) {
   for (var i = event.resultIndex; i < event.results.length; ++i) {      
         if (event.results[i].isFinal) { 
             document.getElementById("transcript").value = event.results[i][0].transcript
-            console.log('Final')
+            recognition.stop();
         } else {
-            document.getElementById("transcript").value = event.results[i][0].transcript
+            //document.getElementById("transcript").value = event.results[i][0].transcript
         } 
     }
 };
