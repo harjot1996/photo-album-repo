@@ -1,6 +1,6 @@
 if (!('webkitSpeechRecognition' in window)) {
   console.log("Not Supported");
-} else { //Let’s do some cool stuff :)
+} else {
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
@@ -13,7 +13,6 @@ recognition.onstart = function() {
 };
 
 recognition.onend = function() {
-  console.log("ended")
   element_ = "start-button";
   document.getElementById("start-button").style.backgroundColor = "#fff";
   document.getElementById("start-button").style.color = "#007bff";
@@ -22,11 +21,9 @@ recognition.onend = function() {
 recognition.onresult = function(event) {
   for (var i = event.resultIndex; i < event.results.length; ++i) {      
         if (event.results[i].isFinal) { 
-            document.getElementById("transcript").value = event.results[i][0].transcript
+            document.getElementById("transcript").value = event.results[i][0].transcript;
             recognition.stop();
-        } else {
-            //document.getElementById("transcript").value = event.results[i][0].transcript
-        } 
+        }
     }
 };
 
