@@ -13,6 +13,7 @@ recognition.onstart = function() {
 };
 
 recognition.onend = function() {
+  console.log("ended")
   element_ = "start-button";
   document.getElementById("start-button").style.backgroundColor = "#fff";
   document.getElementById("start-button").style.color = "#007bff";
